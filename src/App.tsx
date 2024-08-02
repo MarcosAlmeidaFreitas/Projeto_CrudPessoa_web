@@ -1,76 +1,81 @@
 import {
-  Input, Box, Center, FormControl, Flex, FormLabel, HStack, Button, Divider,
-  AbsoluteCenter,
-  defineStyle,
-  defineStyleConfig,
-  color
-} from "@chakra-ui/react"
-
-export const dividerTheme = defineStyleConfig({
-  defaultProps: {
-      size: '7',
-      colorScheme: 'brand',
-  },
-})
-
-
+  Table,
+  Thead,
+  Tbody,
+  Tfoot,
+  Tr,
+  Th,
+  Td,
+  TableCaption,
+  TableContainer,
+  Box,
+  Center,
+  Icon,
+  Button
+} from '@chakra-ui/react'
+import { FaFilePdf } from "react-icons/fa6";
+import { FaUserEdit } from "react-icons/fa";
+import { MdDeleteForever } from "react-icons/md";
 
 function App() {
   return (
-    <Box h = "100vh">
-      <Center as="header" h={150} color="white" bg="gray.600" fontWeight="bold" fontSize="4x1" pb="8">
-        Formulário
+    <Box h="100vh">
+      <Center as="header" h={100} color="white" bg="gray.600" fontWeight="bold" p="0" fontSize="xxx-large" pb="2">
+        Gestão de Pessoas
       </Center>
-      
-      <Flex align="center" justify="center" bg="blackAlpha.200" h="calc(100vh - 150px)">
-        <Center w="100%" maxW={840} bg="white" top={100} position="absolute" borderRadius={5} p="6" boxShadow="0 1px 2px #ccc">
-          <FormControl display="flex" flexDir="column" gap="4">
-
-            <HStack spacing="4">
-              <Box w="100%">
-                <FormLabel htmlFor="name">Nome Completo:</FormLabel>
-                <Input id="name"/>
-              </Box>
-              
-              <Box w="100%">
-                <FormLabel htmlFor="email">Email:</FormLabel>
-                <Input id="email"/>
-              </Box>
-            </HStack>
-
-            <HStack spacing="4">
-              <Box w="100%">
-                <FormLabel htmlFor="cpf">CPF:</FormLabel>
-                <Input id="cpf"/>
-              </Box>
-              
-              <Box w="100%">
-                <FormLabel htmlFor="phone">Telefone:</FormLabel>
-                <Input id="phone"/>
-              </Box>
-
-              <Box w="100%">
-                <FormLabel htmlFor="nasc">Data de Nascimento:</FormLabel>
-                <Input id="nasc" type="date"/>
-              </Box>
-            </HStack>
-
-            <HStack spacing="4">
-              
-            </HStack>
-            
-            <Box padding='4'>
-              <AbsoluteCenter fontFamily={"cursive"} fontSize={'larger'} bg='white' px='0' h={0}>
-                Endereço
-              </AbsoluteCenter>
-              <Divider borderColor={'gray'} size={'4x1'}/>
-            </Box>
-
-          </FormControl>
+      <Box w='100vw'>
+        <Center w='100%'>
+          <TableContainer justifyItems='center' w='92%' p="2">
+            <Table variant='simple'>
+              <Thead>
+                <Tr>
+                  <Th><Center>Nome</Center></Th>
+                  <Th><Center>CPF</Center></Th>
+                  <Th><Center>Data de Nascimento</Center></Th>
+                  <Th><Center>Telefone</Center></Th>
+                  <Th><Center>Ações</Center></Th>
+                </Tr>
+              </Thead>
+              <Tbody>
+                <Tr>
+                  <Td>inches</Td>
+                  <Td>millimetres (mm)</Td>
+                  <Td></Td>
+                  <Td></Td>
+                  <Td>
+                    <Center>
+                      <Button bg='none' _hover={{color:'gray.600'}}><FaUserEdit size='30'></FaUserEdit></Button>
+                      <Button bg='none' _hover={{color:'gray.600'}}><FaFilePdf size='25'></FaFilePdf></Button>
+                      <Button bg='none' _hover={{color:'gray.600'}}><MdDeleteForever size='30'></MdDeleteForever></Button>
+                    </Center>
+                  </Td>
+                </Tr>
+                <Tr>
+                  <Td>feet</Td>
+                  <Td>centimetres (cm)</Td>
+                  <Td isNumeric>30.48</Td>
+                </Tr>
+                <Tr>
+                  <Td>yards</Td>
+                  <Td>metres (m)</Td>
+                  <Td isNumeric>0.91444</Td>
+                </Tr>
+              </Tbody>
+              <Tfoot>
+                <Tr>
+                  <Th>To convert</Th>
+                  <Th>into</Th>
+                  <Th isNumeric>multiply by</Th>
+                </Tr>
+              </Tfoot>
+            </Table>
+          </TableContainer>
         </Center>
-      </Flex>
+
+      </Box>
+
     </Box>
   )
 }
 
-export default App
+export default App;
