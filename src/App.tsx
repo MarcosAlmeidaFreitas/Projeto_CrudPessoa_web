@@ -11,18 +11,33 @@ import {
   Box,
   Center,
   Icon,
-  Button
+  Button,
+  Input
 } from '@chakra-ui/react'
 import { FaFilePdf } from "react-icons/fa6";
 import { FaUserEdit } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
+import { ChangeEvent, useState } from 'react';
 
-function App() {
+export default function App() {
+  
+  //codigo para pegar o valor do input de pesquisa
+  const [getInput_find, setInput_find] = useState('');
+  const onChange_inputFind = (event: ChangeEvent<HTMLInputElement>) => {
+    setInput_find(event.target.value);
+    console.log(event.target.value);
+  }
+
   return (
     <Box h="100vh">
       <Center as="header" h={100} color="white" bg="gray.600" fontWeight="bold" p="0" fontSize="xxx-large" pb="2">
         Gestão de Pessoas
       </Center>
+      <Box display='flex'>
+        <Center w="100%" marginTop='6'>
+          <Input type='text' id='input_find' onChange={onChange_inputFind} w='40%' placeholder='Pesquisar por nome ou por CPF' textAlign='center'></Input>
+        </Center>
+      </Box>
       <Box w='100vw'>
         <Center w='100%'>
           <TableContainer justifyItems='center' w='92%' p="2">
@@ -38,10 +53,10 @@ function App() {
               </Thead>
               <Tbody>
                 <Tr>
-                  <Td>inches</Td>
-                  <Td>millimetres (mm)</Td>
-                  <Td></Td>
-                  <Td></Td>
+                  <Td><Center>Marcos Antonio Almeida</Center></Td>
+                  <Td><Center>150.365.527-09</Center></Td>
+                  <Td><Center>04/05/1997</Center></Td>
+                  <Td><Center>(22) 9888090282</Center></Td>
                   <Td>
                     <Center>
                       <Button bg='none' _hover={{color:'gray.600'}}><FaUserEdit size='30'></FaUserEdit></Button>
@@ -50,24 +65,7 @@ function App() {
                     </Center>
                   </Td>
                 </Tr>
-                <Tr>
-                  <Td>feet</Td>
-                  <Td>centimetres (cm)</Td>
-                  <Td isNumeric>30.48</Td>
-                </Tr>
-                <Tr>
-                  <Td>yards</Td>
-                  <Td>metres (m)</Td>
-                  <Td isNumeric>0.91444</Td>
-                </Tr>
               </Tbody>
-              <Tfoot>
-                <Tr>
-                  <Th>To convert</Th>
-                  <Th>into</Th>
-                  <Th isNumeric>multiply by</Th>
-                </Tr>
-              </Tfoot>
             </Table>
           </TableContainer>
         </Center>
@@ -77,5 +75,3 @@ function App() {
     </Box>
   )
 }
-
-export default App;
